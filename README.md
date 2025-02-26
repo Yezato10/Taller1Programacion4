@@ -38,7 +38,7 @@ Computador.java: Representa computadoras con atributos como marca, modelo y sist
 TipoComputador.java: Enum para clasificar los tipos de computadoras (PORTÁTIL, ESCRITORIO, TABLET).
 
 
-##El programa realiza las siguientes acciones:
+## El programa realiza las siguientes acciones:
 
 Crea una instancia de ServicioBiblioteca.
 Agrega 3 libros, 3 periódicos y 3 computadores.
