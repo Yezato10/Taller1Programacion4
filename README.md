@@ -48,10 +48,7 @@ Elimina el primer recurso que coincide con el criterio.
 Muestra la lista actualizada después de la eliminación.
 
 ## Cómo Ejecutarlo
-
-1. git clone https://github.com/tu_usuario/tu_repositorio.git
-   cd tu_repositorio
-
-##compilar maven en Visual Studio Code: 
+compilar maven en Visual Studio Code: 
 mvn clean compile
+ingresar a la carpeta de target y ejecutar el comando
 & "$env:JAVA_HOME\bin\java.exe" -jar exercise-1.0.1-SNAPSHOT.jar
