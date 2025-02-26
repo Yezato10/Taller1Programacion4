@@ -3,17 +3,17 @@ exercise/src/main/java/co/edu/etitc/sistemas/tecnologo/programacion4/
 
 │-- Main.java
 
-│-- ServicioBiblioteca.java
+│--- ServicioBiblioteca.java
 
-│-- Recurso.java (Clase abstracta)
+│---- Recurso.java (Clase abstracta)
 
-│-- Libro.java (Extiende Recurso)
+│----- Libro.java (Extiende Recurso)
 
-│-- Periodico.java (Extiende Recurso)
+│------ Periodico.java (Extiende Recurso)
 
-│-- Computador.java (Extiende Recurso)
+│------- Computador.java (Extiende Recurso)
 
-│-- TipoComputador.java (Enum para definir tipos de computadora)
+│-------- TipoComputador.java (Enum para definir tipos de computadora)
 
 ## Requisitos
 
