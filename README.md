@@ -21,21 +21,21 @@ exercise/src/main/java/co/edu/etitc/sistemas/tecnologo/programacion4/
 - JDK 17 o superior  
 - Apache Maven 
 
-##Descripción de Archivos:
+## Descripción de Archivos:
 
-Main.java: Es el punto de entrada del programa. Aquí se crean instancias de los recursos y se prueban las funciones de la biblioteca.
+--Main.java: Es el punto de entrada del programa. Aquí se crean instancias de los recursos y se prueban las funciones de la biblioteca.
 
-ServicioBiblioteca.java: Clase que gestiona los recursos en la biblioteca (agregar, eliminar, buscar y listar).
+--ServicioBiblioteca.java: Clase que gestiona los recursos en la biblioteca (agregar, eliminar, buscar y listar).
 
-Recurso.java: Clase abstracta que define las características generales de un recurso.
+--Recurso.java: Clase abstracta que define las características generales de un recurso.
 
-Libro.java: Representa libros con atributos adicionales como autor, editorial y año de publicación.
+--Libro.java: Representa libros con atributos adicionales como autor, editorial y año de publicación.
 
-Periodico.java: Representa periódicos con fecha de publicación y editorial.
+--Periodico.java: Representa periódicos con fecha de publicación y editorial.
 
-Computador.java: Representa computadoras con atributos como marca, modelo y sistema operativo.
+--Computador.java: Representa computadoras con atributos como marca, modelo y sistema operativo.
 
-TipoComputador.java: Enum para clasificar los tipos de computadoras (PORTÁTIL, ESCRITORIO, TABLET).
+--TipoComputador.java: Enum para clasificar los tipos de computadoras (PORTÁTIL, ESCRITORIO, TABLET).
 
 
 ## El programa realiza las siguientes acciones:
