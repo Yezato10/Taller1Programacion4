@@ -16,16 +16,16 @@ public class Periodico extends Recurso {
 
     @Override
     public boolean coincideConCriterio(String criterio) {
+        if (super.coincideConCriterio(criterio)) {
+            return true;
+        }
+
         if (criterio == null || criterio.isEmpty()) {
             return false;
         }
 
-        if (titulo.contains(criterio)
-            || editorial.contains(criterio)
-            || fechaPublicacion.toString().contains(criterio)) {
-            return true;
-        }
-        return false;
+        return editorial.contains(criterio)
+            || fechaPublicacion.toString().contains(criterio);
     }
 
     @Override
