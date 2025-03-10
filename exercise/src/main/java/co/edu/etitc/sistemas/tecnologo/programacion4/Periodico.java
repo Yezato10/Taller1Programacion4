@@ -2,7 +2,6 @@ package co.edu.etitc.sistemas.tecnologo.programacion4;
 
 import java.time.LocalDateTime;
 
-
 public class Periodico extends Recurso {
     private String editorial;
     private LocalDateTime fechaPublicacion;
@@ -12,6 +11,14 @@ public class Periodico extends Recurso {
         super(titulo, fechaIngreso, activo);
         this.editorial = editorial;
         this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public LocalDateTime getFechaPublicacion() {
+        return fechaPublicacion;
     }
 
     @Override
@@ -35,3 +42,4 @@ public class Periodico extends Recurso {
             + "fechaPublicacion=" + fechaPublicacion + "\n";
     }
 }
+
