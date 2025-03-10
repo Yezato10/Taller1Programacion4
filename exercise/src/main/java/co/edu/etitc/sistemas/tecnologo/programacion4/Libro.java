@@ -18,19 +18,19 @@ public class Libro extends Recurso {
     }
 
 
-    @Override
+   @Override
     public boolean coincideConCriterio(String criterio) {
+        if (super.coincideConCriterio(criterio)) { 
+            return true;
+        }
+
         if (criterio == null || criterio.isEmpty()) {
             return false;
         }
 
-        if (titulo.contains(criterio)
-            || autor.contains(criterio)
+        return autor.contains(criterio)
             || editorial.contains(criterio)
-            || String.valueOf(año).contains(criterio)) {
-            return true;
-        }
-        return false;
+            || String.valueOf(año).contains(criterio);
     }
 
 
