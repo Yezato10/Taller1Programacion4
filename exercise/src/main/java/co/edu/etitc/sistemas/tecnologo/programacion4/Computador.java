@@ -2,7 +2,6 @@ package co.edu.etitc.sistemas.tecnologo.programacion4;
 
 import java.time.LocalDateTime;
 
-
 public class Computador extends Recurso {
     private String marca;
     private TipoComputador tipo;
@@ -14,9 +13,17 @@ public class Computador extends Recurso {
         this.tipo = tipo;
     }
 
-     @Override
+    public String getMarca() {
+        return marca;
+    }
+
+    public TipoComputador getTipo() {
+        return tipo;
+    }
+
+    @Override
     public boolean coincideConCriterio(String criterio) {
-        if (super.coincideConCriterio(criterio)) { 
+        if (super.coincideConCriterio(criterio)) {
             return true;
         }
 
@@ -28,7 +35,6 @@ public class Computador extends Recurso {
             || tipo.toString().contains(criterio);
     }
 
-
     @Override
     public String toString() {
         return super.toString()
@@ -36,3 +42,4 @@ public class Computador extends Recurso {
             + "tipo=" + tipo + "\n";
     }
 }
+
