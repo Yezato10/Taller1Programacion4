@@ -14,19 +14,20 @@ public class Computador extends Recurso {
         this.tipo = tipo;
     }
 
-    @Override
+     @Override
     public boolean coincideConCriterio(String criterio) {
+        if (super.coincideConCriterio(criterio)) { 
+            return true;
+        }
+
         if (criterio == null || criterio.isEmpty()) {
             return false;
         }
- 
-        if (titulo.contains(criterio)
-            || marca.contains(criterio)
-            || tipo.toString().contains(criterio)) {
-            return true;
-        }
-        return false;
+
+        return marca.contains(criterio)
+            || tipo.toString().contains(criterio);
     }
+
 
     @Override
     public String toString() {
