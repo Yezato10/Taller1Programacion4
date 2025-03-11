@@ -16,7 +16,6 @@ public abstract class Recurso {
     }
 
 
-    public abstract boolean coincideConCriterio(String criterio);
 
     @Override
     public String toString() {
@@ -37,5 +36,13 @@ public abstract class Recurso {
 
     public boolean isActivo() {
         return activo;
+    }
+}
+
+ public boolean coincideConCriterio(String criterio) {
+        if (criterio == null || criterio.isEmpty()) {
+            return false;
+        }
+        return titulo.contains(criterio) || fechaIngreso.toString().contains(criterio);
     }
 }
