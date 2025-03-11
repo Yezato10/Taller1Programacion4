@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 
 public abstract class Recurso {
-    protected String titulo;         
-    protected LocalDateTime fechaIngreso; 
-    protected boolean activo;        
+    private String titulo;         
+    private LocalDateTime fechaIngreso; 
+    private boolean activo;        
 
 
     public Recurso(String titulo, LocalDateTime fechaIngreso, boolean activo) {
