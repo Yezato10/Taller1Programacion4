@@ -1,3 +1,6 @@
+Primer Parcial GRUPO 57B - Programación IV
+Integrantes: Cristian Yesid Zambrano Torres - Heider Johan Correa Perez
+
 -----------Implementación de Spring en un Proyecto Maven------------
 
 ** Explique la diferencia entre @Component y @Configuration en Spring.**
