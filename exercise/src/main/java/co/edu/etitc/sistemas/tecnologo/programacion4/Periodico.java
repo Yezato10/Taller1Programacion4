@@ -2,7 +2,6 @@ package co.edu.etitc.sistemas.tecnologo.programacion4;
 
 import java.time.LocalDateTime;
 
-
 public class Periodico extends Recurso {
     private String editorial;
     private LocalDateTime fechaPublicacion;
@@ -14,18 +13,26 @@ public class Periodico extends Recurso {
         this.fechaPublicacion = fechaPublicacion;
     }
 
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public LocalDateTime getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
     @Override
     public boolean coincideConCriterio(String criterio) {
+        if (super.coincideConCriterio(criterio)) {
+            return true;
+        }
+
         if (criterio == null || criterio.isEmpty()) {
             return false;
         }
 
-        if (titulo.contains(criterio)
-            || editorial.contains(criterio)
-            || fechaPublicacion.toString().contains(criterio)) {
-            return true;
-        }
-        return false;
+        return editorial.contains(criterio)
+            || fechaPublicacion.toString().contains(criterio);
     }
 
     @Override
