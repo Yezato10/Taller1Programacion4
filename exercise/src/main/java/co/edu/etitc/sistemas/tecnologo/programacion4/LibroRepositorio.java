@@ -1,11 +1,11 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class LibroRepositorio implements Repositorio<Libro> {
+@Component
+public class LibroRepositorio implements Repositorio<Libro> { 
     private List<Libro> libros = new ArrayList<>();
 
     @Override
@@ -14,19 +14,23 @@ public class LibroRepositorio implements Repositorio<Libro> {
     }
 
     @Override
-    public void eliminar(Libro libro) {
+    public void eliminar(Libro libro) { 
         libros.remove(libro);
     }
 
     @Override
-    public List<Libro> buscar(String criterio) {
-        return libros.stream()
-            .filter(libro -> libro.coincideConCriterio(criterio))
-            .toList();
+    public List<Libro> buscar(String criterio) { 
+        List<Libro> resultados = new ArrayList<>();
+        for (Libro libro : libros) {
+            if (libro.coincideConCriterio(criterio)) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
     }
 
     @Override
-    public List<Libro> obtenerTodos() {
+    public List<Libro> obtenerTodos() { 
         return new ArrayList<>(libros);
     }
 }

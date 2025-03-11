@@ -1,10 +1,10 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class ComputadorRepositorio implements Repositorio<Computador> {
     private List<Computador> computadores = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class ComputadorRepositorio implements Repositorio<Computador> {
     }
 
     @Override
-    public List<Computador> obtenerTodos() {
+    public List<Computador> obtenerTodos() { 
         return new ArrayList<>(computadores);
     }
 }
