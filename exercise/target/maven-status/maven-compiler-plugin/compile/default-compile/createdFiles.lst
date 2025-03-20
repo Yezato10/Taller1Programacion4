@@ -1,7 +1,13 @@
+co\edu\etitc\sistemas\tecnologo\programacion4\AppInfo.class
+co\edu\etitc\sistemas\tecnologo\programacion4\LibroRepositorio.class
 co\edu\etitc\sistemas\tecnologo\programacion4\Computador.class
 co\edu\etitc\sistemas\tecnologo\programacion4\Libro.class
-co\edu\etitc\sistemas\tecnologo\programacion4\Main.class
+co\edu\etitc\sistemas\tecnologo\programacion4\ComputadorRepositorio.class
 co\edu\etitc\sistemas\tecnologo\programacion4\TipoComputador.class
 co\edu\etitc\sistemas\tecnologo\programacion4\ServicioBiblioteca.class
-co\edu\etitc\sistemas\tecnologo\programacion4\Periodico.class
+co\edu\etitc\sistemas\tecnologo\programacion4\PeriodicoRepositorio.class
 co\edu\etitc\sistemas\tecnologo\programacion4\Recurso.class
+co\edu\etitc\sistemas\tecnologo\programacion4\AppConfig.class
+co\edu\etitc\sistemas\tecnologo\programacion4\Main.class
+co\edu\etitc\sistemas\tecnologo\programacion4\Repositorio.class
+co\edu\etitc\sistemas\tecnologo\programacion4\Periodico.class
