@@ -1,45 +1,57 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
 
+import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
+import org.springframework.data.relational.core.mapping.Table;
 
-
-public class Libro extends Recurso {
+@Table("LIBRO")
+public class Libro implements Recurso {
+    @Id
+    private Integer id;
+    private String nombre;
+    private LocalDateTime fechaIngreso;
+    private boolean activo;
     private String autor;
     private String editorial;
-    private int año;
+    private int anio;
 
-    public Libro(String titulo, LocalDateTime fechaIngreso, boolean activo,
-                 String autor, String editorial, int año) {
+    // Constructor vacío 
+    public Libro() {}
 
-        super(titulo, fechaIngreso, activo);
+    // Constructor
+    public Libro(String nombre, LocalDateTime fechaIngreso, boolean activo, 
+                String autor, String editorial, int anio) {
+        this.nombre = nombre;
+        this.fechaIngreso = fechaIngreso;
+        this.activo = activo;
         this.autor = autor;
         this.editorial = editorial;
-        this.año = año;
+        this.anio = anio;
     }
 
+    // Getters y Setters
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    @Override public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    @Override public LocalDateTime getFechaIngreso() { return fechaIngreso; }
+    public void setFechaIngreso(LocalDateTime fechaIngreso) { this.fechaIngreso = fechaIngreso; }
+    @Override public boolean isActivo() { return activo; }
+    public void setActivo(boolean activo) { this.activo = activo; }
+    public String getAutor() { return autor; }
+    public void setAutor(String autor) { this.autor = autor; }
+    public String getEditorial() { return editorial; }
+    public void setEditorial(String editorial) { this.editorial = editorial; }
+    public int getAnio() { return anio; }
+    public void setAnio(int anio) { this.anio = anio; }
 
     @Override
-    public boolean coincideConCriterio(String criterio) {
-        if (criterio == null || criterio.isEmpty()) {
-            return false;
-        }
-
-        if (titulo.contains(criterio)
-            || autor.contains(criterio)
-            || editorial.contains(criterio)
-            || String.valueOf(año).contains(criterio)) {
-            return true;
-        }
-        return false;
+    public void darDeBaja() {
+        this.activo = false;
     }
-
 
     @Override
     public String toString() {
-  
-        return super.toString()
-            + "autor=" + autor + "\n"
-            + "editorial=" + editorial + "\n"
-            + "año=" + año + "\n";
+        return "Libro[id=" + id + ", nombre=" + nombre + ", activo=" + activo + "]";
     }
 }

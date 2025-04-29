@@ -1,69 +1,75 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
 
-
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
 
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
-            
-            ServicioBiblioteca servicio = context.getBean(ServicioBiblioteca.class);
+        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+        ServicioBiblioteca servicio = context.getBean(ServicioBiblioteca.class);
 
-            System.out.println("Agregando recursos...");
-            servicio.agregarLibro(new Libro(
-                "Cien años de soledad", LocalDateTime.now(), true,
-                "Gabriel García Márquez", "Editorial Sudamericana", 1967));
+        System.out.println("--- Agregando recursos ---");
+        
+        // Libros
+        servicio.agregar(new Libro("Cien años de soledad", LocalDateTime.now(), true, 
+                                 "García Márquez", "Sudamericana", 1967));
+        servicio.agregar(new Libro("El principito", LocalDateTime.now(), true, 
+                                 "Antoine de Saint-Exupéry", "Salamandra", 1943));
+        Libro libroInactivo = new Libro("1984", LocalDateTime.now(), false, 
+                                      "George Orwell", "Debolsillo", 1949);
+        servicio.agregar(libroInactivo);
 
-            servicio.agregarLibro(new Libro(
-                "1984", LocalDateTime.now(), false,
-                "George Orwell", "Secker & Warburg", 1949));
+        // Periódicos
+        servicio.agregar(new Periodico("El Tiempo", LocalDateTime.now(), true, 
+                                     LocalDate.now(), "Casa Editorial El Tiempo"));
+        servicio.agregar(new Periodico("El Espectador", LocalDateTime.now(), true, 
+                                     LocalDate.now().minusDays(1), "Compañía Periodística"));
+        Periodico periodicoInactivo = new Periodico("La República", LocalDateTime.now(), false, 
+                                                  LocalDate.now().minusDays(2), "Grupo La República");
+        servicio.agregar(periodicoInactivo);
 
-            servicio.agregarPeriodico(new Periodico(
-                "El Tiempo", LocalDateTime.now(), true,
-                "Casa Editorial El Tiempo", LocalDateTime.now()));
+        // Computadores
+        servicio.agregar(new Computador("HP Pavilion", LocalDateTime.now(), true, 
+                                      "HP", "Pavilion x360", "Windows 11", TipoComputador.PORTATIL));
+        servicio.agregar(new Computador("MacBook Pro", LocalDateTime.now(), true, 
+                                      "Apple", "M2 Pro", "macOS", TipoComputador.PORTATIL));
+        Computador computadorInactivo = new Computador("Dell Inspiron", LocalDateTime.now(), false, 
+                                                     "Dell", "Inspiron 15", "Windows 10", TipoComputador.ESCRITORIO);
+        servicio.agregar(computadorInactivo);
 
-            servicio.agregarPeriodico(new Periodico(
-                "El Espectador", LocalDateTime.now(), false,
-                "Comunican S.A.", LocalDateTime.now()));
-
-            servicio.agregarComputador(new Computador(
-                "PC Gamer", LocalDateTime.now(), true,
-                "Janus", TipoComputador.ESCRITORIO));
-
-            servicio.agregarComputador(new Computador(
-                "Pavilion x360", LocalDateTime.now(), true,
-                "Hewlett-Packard", TipoComputador.PORTATIL));
-
-
-            System.out.println("\n=== LISTA DE RECURSOS (INICIAL) ===");
-            List<Recurso> recursosIniciales = servicio.obtenerTodos();
-            for (Recurso recurso : recursosIniciales) {
-                System.out.println(recurso);
-            }
+        System.out.println("\n--- Todos los recursos (activos e inactivos) ---");
+        servicio.obtenerTodos().forEach(System.out::println);
 
 
-            String criterioBusqueda = "Pavilion";
-            System.out.println("\n=== BUSCANDO RECURSOS CON CRITERIO: '" + criterioBusqueda + "' ===");
-            List<Recurso> resultadosBusqueda = servicio.buscarRecursos(criterioBusqueda);
-            for (Recurso recurso : resultadosBusqueda) {
-                System.out.println(recurso);
-            }
+        System.out.println("\n--- recursos inactivos ---");
+        System.out.println("Quitando libro inactivo: " + libroInactivo.getNombre());
+        servicio.quitarRecurso(libroInactivo);
+        
+        System.out.println("Quitando periódico inactivo: " + periodicoInactivo.getNombre());
+        servicio.quitarRecurso(periodicoInactivo);
+        
+        System.out.println("Quitando computador inactivo: " + computadorInactivo.getNombre());
+        servicio.quitarRecurso(computadorInactivo);
 
-            if (!resultadosBusqueda.isEmpty()) {
-                Recurso recursoAEliminar = resultadosBusqueda.get(0);
-                System.out.println("\nEliminando recurso: " + recursoAEliminar.getTitulo());
-                servicio.eliminarRecurso(recursoAEliminar);
-            }
 
-   
-            System.out.println("\n=== LISTA DE RECURSOS (ACTUALIZADA) ===");
-            List<Recurso> recursosActualizados = servicio.obtenerTodos();
-            for (Recurso recurso : recursosActualizados) {
-                System.out.println(recurso);
-            }
-        } //fin context
+        System.out.println("\n--- Recursos totales ---");
+        servicio.obtenerTodos().forEach(System.out::println);
+
+
+        System.out.println("\n--- Buscando recursos con criterio 'Pro' ---");
+        servicio.buscarRecursos("Pro").forEach(System.out::println);
+
+        System.out.println("\n--- Buscando recursos con criterio 'años' ---");
+        servicio.buscarRecursos("años").forEach(System.out::println);
+
+        System.out.println("\n--- Buscando recursos con criterio 'HP' ---");
+        servicio.buscarRecursos("HP").forEach(System.out::println);
+
+        context.close();
     }
 }
