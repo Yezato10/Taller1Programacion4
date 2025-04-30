@@ -1,15 +1,26 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;  
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Repository
+@Service
 public class ServicioBiblioteca {
-    @Autowired private LibroRepositorio repositorioLibros;
-    @Autowired private PeriodicoRepositorio repositorioPeriodicos;
-    @Autowired private ComputadorRepositorio repositorioComputadores;
+    private LibroRepositorio repositorioLibros;
+    private PeriodicoRepositorio repositorioPeriodicos;
+    private ComputadorRepositorio repositorioComputadores;
+    
+    //constructores
+    public ServicioBiblioteca(
+        LibroRepositorio repositorioLibros,
+        PeriodicoRepositorio repositorioPeriodicos, 
+        ComputadorRepositorio repositorioComputadores
+    ) {
+        this.repositorioLibros = repositorioLibros;
+        this.repositorioPeriodicos = repositorioPeriodicos;
+        this.repositorioComputadores = repositorioComputadores;
+    }
+
 
     public void agregar(Recurso recurso) {
         if (recurso instanceof Libro) repositorioLibros.save((Libro) recurso);

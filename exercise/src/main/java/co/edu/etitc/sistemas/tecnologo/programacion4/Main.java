@@ -9,9 +9,10 @@ import java.time.LocalDate;
 @SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+    //try-with-resources
+    try (ConfigurableApplicationContext context = SpringApplication.run(Main.class, args)) {
         ServicioBiblioteca servicio = context.getBean(ServicioBiblioteca.class);
+            
 
         System.out.println("--- Agregando recursos ---");
         
@@ -70,6 +71,6 @@ public class Main {
         System.out.println("\n--- Buscando recursos con criterio 'HP' ---");
         servicio.buscarRecursos("HP").forEach(System.out::println);
 
-        context.close();
+        } //fin context
     }
 }
