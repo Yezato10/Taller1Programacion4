@@ -9,7 +9,7 @@ HEIDER JOHAN CORREA PEREZ
 
 Aplicación de gestión de recursos de una biblioteca  (libros, periódicos, computadores) usando Spring Boot, Spring Data JDBC y base de datos H2 embebida.
 
-# Utilizarios
+# Utilitarios
 - Java 21
 - Spring Boot 3.4.4
 - Spring Data JDBC
