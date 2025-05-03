@@ -13,7 +13,7 @@ public class AppInfo {
     @PostConstruct 
     public void imprimirNombreApp() {
         System.out.println("\n=== APLICACIÓN INICIADA ===");
-        System.out.println("Nombre: " + nombreApp);
-        System.out.println("===========================\n");
+        System.out.println("\n Nombre: " + nombreApp);
+
     }
 }

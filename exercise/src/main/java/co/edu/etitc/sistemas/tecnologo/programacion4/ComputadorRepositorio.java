@@ -1,36 +1,13 @@
 package co.edu.etitc.sistemas.tecnologo.programacion4;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.stereotype.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import org.springframework.data.jdbc.repository.query.Query;
 
-@Component
-public class ComputadorRepositorio implements Repositorio<Computador> {
-    private List<Computador> computadores = new ArrayList<>();
-
-    @Override
-    public void agregar(Computador computador) {
-        computadores.add(computador);
-    }
-
-    @Override
-    public void eliminar(Computador computador) {
-        computadores.remove(computador);
-    }
-
-    @Override
-    public List<Computador> buscar(String criterio) {
-        List<Computador> resultados = new ArrayList<>();
-        for (Computador computador : computadores) {
-            if (computador.coincideConCriterio(criterio)) {
-                resultados.add(computador);
-            }
-        }
-        return resultados;
-    }
-
-    @Override
-    public List<Computador> obtenerTodos() { 
-        return new ArrayList<>(computadores);
-    }
+@Repository
+public interface ComputadorRepositorio extends CrudRepository<Computador, Integer> {
+    @Query("SELECT * FROM COMPUTADOR WHERE nombre LIKE '%' || :criterio || '%' OR TIPO LIKE '%' || :criterio || '%'")
+    Collection<Computador> findByCriteria(@Param("criterio") String criterio);
 }
