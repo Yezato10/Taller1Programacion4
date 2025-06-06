@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface PeriodicoRepositorio extends CrudRepository<Periodico, Integer> {
     @Query("SELECT * FROM PERIODICO WHERE nombre LIKE '%' || :criterio || '%' OR EDITORIAL LIKE '%' || :criterio || '%'")
     Collection<Periodico> findByCriteria(@Param("criterio") String criterio);
-    
+    void deleteById(Integer id);
 }

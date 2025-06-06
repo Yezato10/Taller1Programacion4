@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 import org.springframework.data.relational.core.mapping.Table;
 
+
 @Table("LIBRO")
 public class Libro implements Recurso {
     @Id
@@ -14,7 +15,7 @@ public class Libro implements Recurso {
     private String autor;
     private String editorial;
     private int anio;
-
+    
     // Constructor vacío 
     public Libro() {}
 
@@ -54,4 +55,5 @@ public class Libro implements Recurso {
     public String toString() {
         return "Libro[id=" + id + ", nombre=" + nombre + ", activo=" + activo + "]";
     }
+
 }
