@@ -1,57 +1,38 @@
 # GRUPO DE TRABAJO: 
-## PROGRAMACIÓN  4 -- S7A
+## PROGRAMACIÓN  4 -- S7B
 ### Intregrantes:
 CRISTIAN YESID ZAMBRANO TORRES
 
 HEIDER JOHAN CORREA PEREZ
 
-#  Biblioteca Digital con Spring Boot
+#  Biblioteca Digital - Spring Boot + REST API
 
-Aplicación de gestión de recursos de una biblioteca  (libros, periódicos, computadores) usando Spring Boot, Spring Data JDBC y base de datos H2 embebida.
+Aplicación web para gestionar recursos de una biblioteca (libros, periódicos y computadores) con backend en Spring Boot y frontend en HTML/JavaScript.
 
-# Utilitarios
-- Java 21
-- Spring Boot 3.4.4
-- Spring Data JDBC
-- H2 Database (embebida)
-- Maven
+##  Tecnologías Utilizadas
+- **Backend**: Java 17, Spring Boot 3.x, Spring Data JDBC,
+- **Frontend**: HTML5, CSS3, JavaScript (Fetch API)
+- **Base de datos**: H2 (en memoria)
+- **Herramientas**: Maven 21, Bootstrap 5
 
-# Funcionalidades Principales
-1. Gestión de recursos:
-   - Agregar libros, periódicos y computadores
-   - Dar de baja recursos (marcar como inactivos)
-   - Eliminar recursos inactivos
-2. Búsquedas:
-   - Búsqueda por criterio en todos los campos
-   - Listado completo de recursos
-3. Base de datos:
-   - Persistencia automática con H2
-   - Esquema inicial mediante `schema.sql`
+##  Funcionalidades Principales
+### Backend (REST API)
+```http
+POST    /api/recursos/libros       # Agrega un nuevo libro
+POST    /api/recursos/periodicos   # Agrega un nuevo periódico
+POST    /api/recursos/computadores # Agrega un nuevo computador
+DELETE  /api/recursos/{id}?tipo={tipo} # Elimina un recurso
+GET     /api/recursos              # Lista todos los recursos
+GET     /api/recursos/buscar?criterio={texto} # Busca recursos
 
-# Arbol del proyecto:
-src/
-├── main/
-│ ├── java/
-│ │ └── co/edu/etitc/sistemas/tecnologo/programacion4/
-│ │ │ ├── AppInfo.java
-│ │ │ ├── Computador.java
-│ │ │ ├── Libro.java
-│ │ │ ├── Periodico.java
-│ │ │ └── Recurso.java (Interfaz)
-│ │ ├── repositories/
-│ │ │ ├── ComputadorRepositorio.java (Interfaz)
-│ │ │ ├── LibroRepositorio.java (Interfaz)
-│ │ │ └── PeriodicoRepositorio.java (Interfaz)
-│ │ ├── services/
-│ │ │ └── ServicioBiblioteca.java
-│ │ └── Main.java
-│ └── resources/
-│ ├── application.properties
-│ └── schema.sql
+## Frontend
 
 
-## Configuración
-application.properties
-spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-spring.h2.console.enabled=true # Consola en /h2-console
-spring.sql.init.mode=always # Ejecuta schema.sql al iniciar
+Formularios dinámicos por tipo de recurso
+
+Tabla interactiva con filtros
+
+Eliminación con confirmación
+
+## La aplicación estará disponible en:
+ http://localhost:8080/static/index.html
