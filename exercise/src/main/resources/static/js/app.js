@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initForms();
     document.getElementById('resourceType').addEventListener('change', showForm);
     document.getElementById('filterType').addEventListener('change', filtrarRecursos);
-    cargarRecursos();
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        cargarRecursos(e.target.value);
+    });
 });
 
 // Formularios 
@@ -102,9 +104,14 @@ function showForm() {
 }
 
 // Cargar recursos
-async function cargarRecursos() {
+async function cargarRecursos(criterio = null) {
     try {
-        const response = await fetch('/api/recursos');
+        let url = '/api/recursos';
+        if (criterio && criterio.trim() !== '') {
+            url += `?criterio=${encodeURIComponent(criterio.trim())}`;
+        }
+
+        const response = await fetch(url);
         if (!response.ok) throw new Error('Error al cargar recursos');
         recursos = await response.json();
         mostrarRecursos(recursos);

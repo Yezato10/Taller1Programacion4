@@ -25,8 +25,14 @@ public class BibliotecaController {
     }
 
     @GetMapping
-    public Collection<Recurso> obtenerTodos() {
-        return servicio.obtenerTodos();
+    public Collection<Recurso> obtenerRecursos(
+        @RequestParam(name = "criterio", required = false) String criterio) {
+        
+        if (criterio != null && !criterio.trim().isEmpty()) {
+            return servicio.buscarRecursos(criterio);
+        } else {
+            return servicio.obtenerTodos();
+        }
     }
 
     @PostMapping("/libros")
@@ -56,8 +62,5 @@ public class BibliotecaController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/buscar")
-    public Collection<Recurso> buscarRecursos(@RequestParam String criterio) {
-        return servicio.buscarRecursos(criterio);
-    }
+
 }

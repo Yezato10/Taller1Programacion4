@@ -1,0 +1,40 @@
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.resource-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.btn-delete {
+    color: white;
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.form-section {
+    display: none;
+}
+
+.active-form {
+    display: block;
+}
+
+.detail-item {
+    margin-bottom: 5px;
+}
+
+.filter-container {
+    width: 200px;
+}
