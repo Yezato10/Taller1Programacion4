@@ -10,4 +10,5 @@ import org.springframework.data.jdbc.repository.query.Query;
 public interface ComputadorRepositorio extends CrudRepository<Computador, Integer> {
     @Query("SELECT * FROM COMPUTADOR WHERE nombre LIKE '%' || :criterio || '%' OR TIPO LIKE '%' || :criterio || '%'")
     Collection<Computador> findByCriteria(@Param("criterio") String criterio);
+    void deleteById(Integer id);
 }

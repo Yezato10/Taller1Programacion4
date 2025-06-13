@@ -10,7 +10,6 @@ public class ServicioBiblioteca {
     private PeriodicoRepositorio repositorioPeriodicos;
     private ComputadorRepositorio repositorioComputadores;
     
-    //constructores
     public ServicioBiblioteca(
         LibroRepositorio repositorioLibros,
         PeriodicoRepositorio repositorioPeriodicos, 
@@ -21,17 +20,26 @@ public class ServicioBiblioteca {
         this.repositorioComputadores = repositorioComputadores;
     }
 
-
     public void agregar(Recurso recurso) {
         if (recurso instanceof Libro) repositorioLibros.save((Libro) recurso);
         else if (recurso instanceof Periodico) repositorioPeriodicos.save((Periodico) recurso);
         else if (recurso instanceof Computador) repositorioComputadores.save((Computador) recurso);
     }
 
-    public void quitarRecurso(Recurso recurso) {
-        if (recurso instanceof Libro) repositorioLibros.delete((Libro) recurso);
-        else if (recurso instanceof Periodico) repositorioPeriodicos.delete((Periodico) recurso);
-        else if (recurso instanceof Computador) repositorioComputadores.delete((Computador) recurso);
+    public void quitarRecurso(Integer id, String tipo) {
+        switch(tipo.toLowerCase()) {
+            case "libro":
+                repositorioLibros.deleteById(id);
+                break;
+            case "periodico":
+                repositorioPeriodicos.deleteById(id);
+                break;
+            case "computador":
+                repositorioComputadores.deleteById(id);
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de recurso no válido: " + tipo);
+        }
     }
 
     public Collection<Recurso> buscarRecursos(String criterio) {
